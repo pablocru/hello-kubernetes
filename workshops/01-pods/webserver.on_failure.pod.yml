@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webserver-fail-every-10s-restart-on-failure
+  labels:
+    env: dev
+    version: 0.0.1
+    restartPolicy: OnFailure
+spec:
+  restartPolicy: OnFailure
+  containers:
+    - name: webserver
+      image: nginx
+      command: ["sh", "-c", "echo 'nginx && sleep 10 && exit 1"]
