@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webserver-kill-every-10s-restart-never
+  labels:
+    env: dev
+    version: 0.0.1
+    restartPolicy: Never
+spec:
+  restartPolicy: Never
+  containers:
+    - name: webserver
+      image: nginx
+      command: ["sh", "-c", "nginx && sleep 10 && kill 1"]
